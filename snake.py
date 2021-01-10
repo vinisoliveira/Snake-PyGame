@@ -31,6 +31,10 @@ my_direction = LEFT
 
 clock = pygame.time.Clock()
 
+font = pygame.font.Font('freesansbold.ttf', 18)
+score = 0
+
+game_over = False
 while True:
     clock.tick(15)
     for event in pygame.event.get():
@@ -50,7 +54,19 @@ while True:
     if collision(snake[0], apple_pos):
         apple_pos = on_grid_random()
         snake.append((0, 0))
-        
+    
+    if snake[0][0] == 600 or snake[0][1] == 600 or snake[0][0] < 0 or snake[0][1] < 0:
+        game_over = True
+        break
+
+    for i in range(1, len(snake) - 1):
+        if snake[0][0] == snake[i][0] and snake[0][1] == snake[i][1]:
+            game_over = True
+            break
+
+    if game_over:
+        break
+
     for i in range(len(snake) - 1, 0, -1):
         snake[i] = (snake[i - 1][0], snake[i - 1][1])
 
@@ -66,6 +82,17 @@ while True:
 
     screen.fill((0,0,0))
     screen.blit(apple, apple_pos)
+
+    for x in range(0, 600, 10): 
+        pygame.draw.line(screen, (40, 40, 40), (x, 0), (x, 600))
+    for y in range(0, 600, 10):
+        pygame.draw.line(screen, (40, 40, 40), (0, y), (600, y))
+    
+    score_font = font.render('Score: %s' % (score), True, (255, 255, 255))
+    score_rect = score_font.get_rect()
+    score_rect.topleft = (600 - 120, 10)
+    screen.blit(score_font, score_rect)
+
     for pos in snake:
         screen.blit(snake_skin, pos)
 
