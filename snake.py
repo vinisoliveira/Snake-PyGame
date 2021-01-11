@@ -3,8 +3,8 @@ from pygame.locals import *
 import random
 
 def on_grid_random():
-    x = random.randint(0, 490)
-    y = random.randint(0, 490)
+    x = random.randint(0, 390)
+    y = random.randint(0, 390)
     return (x//10 *10, y //10 *10)
 
 def collision(c1, c2):
@@ -15,7 +15,7 @@ DOWN = 2
 LEFT = 3
 
 pygame.init()
-screen = pygame.display.set_mode((500,500))
+screen = pygame.display.set_mode((400,400))
 pygame.display.set_caption('Snake PyGame')
 
 snake = [(200, 200), (210,200), (220,200)]
@@ -55,7 +55,7 @@ while not game_over:
         snake.append((0, 0))
         score = score + 1
     
-    if snake[0][0] == 600 or snake[0][1] == 600 or snake[0][0] < 0 or snake[0][1] < 0:
+    if snake[0][0] == 400 or snake[0][1] == 400 or snake[0][0] < 0 or snake[0][1] < 0:
         game_over = True
         break
 
@@ -84,13 +84,13 @@ while not game_over:
     screen.blit(apple, apple_pos)
 
     for x in range(0, 600, 10): 
-        pygame.draw.line(screen, (40, 40, 40), (x, 0), (x, 600))
+        pygame.draw.line(screen, (40, 40, 40), (x, 0), (x, 400))
     for y in range(0, 600, 10):
-        pygame.draw.line(screen, (40, 40, 40), (0, y), (600, y))
+        pygame.draw.line(screen, (40, 40, 40), (0, y), (400, y))
     
     score_font = font.render('Score: %s' % (score), True, (255, 255, 255))
     score_rect = score_font.get_rect()
-    score_rect.topleft = (520 - 120, 10)
+    score_rect.topleft = (420 - 120, 10)
     screen.blit(score_font, score_rect)
 
     for pos in snake:
@@ -99,10 +99,10 @@ while not game_over:
     pygame.display.update()
 
 while True:
-    game_over_font = pygame.font.Font('freesansbold.ttf', 75)
+    game_over_font = pygame.font.Font('freesansbold.ttf', 60)
     game_over_screen = game_over_font.render('Game Over', True, (255, 255, 255))
     game_over_rect = game_over_screen.get_rect()
-    game_over_rect.midtop = (500 / 2, 10)
+    game_over_rect.midtop = (400 / 2, 20)
     screen.blit(game_over_screen, game_over_rect)
     pygame.display.update()
     pygame.time.wait(500)
