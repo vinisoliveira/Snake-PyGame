@@ -1,6 +1,11 @@
 import pygame
 from pygame.locals import *
+from pygame import mixer
 import random
+
+pygame.mixer.init()
+mixer.music.load('Kalimba.mp3')
+mixer.music.play(-1)
 
 def on_grid_random():
     x = random.randint(0, 390)
@@ -65,6 +70,7 @@ while not game_over:
             break
 
     if game_over:
+        mixer.music.stop()
         break
 
     for i in range(len(snake) - 1, 0, -1):
