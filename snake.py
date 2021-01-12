@@ -4,7 +4,7 @@ from pygame import mixer
 import random
 
 pygame.mixer.init()
-mixer.music.load('Kalimba.mp3')
+mixer.music.load('Kalimba.mp3') #A MÚSICA NÃO TEM NADA A VER, MAS ISSO É SÓ UM TESTE
 mixer.music.play(-1)
 
 def on_grid_random():
