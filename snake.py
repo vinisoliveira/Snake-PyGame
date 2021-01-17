@@ -3,10 +3,6 @@ from pygame.locals import *
 from pygame import mixer
 import random
 
-pygame.mixer.init()
-mixer.music.load('Kalimba.mp3') #A MÚSICA NÃO TEM NADA A VER, MAS ISSO É SÓ UM TESTE
-mixer.music.play(-1)
-
 def on_grid_random():
     x = random.randint(0, 390)
     y = random.randint(0, 390)
@@ -37,6 +33,10 @@ clock = pygame.time.Clock()
 
 font = pygame.font.Font('freesansbold.ttf', 18)
 score = 0
+
+pygame.mixer.init()
+mixer.music.load('Kalimba.mp3') #A MÚSICA NÃO TEM NADA A VER, MAS ISSO É SÓ UM TESTE
+mixer.music.play(-1)
 
 game_over = False
 while not game_over:
