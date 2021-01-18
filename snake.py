@@ -1,4 +1,5 @@
 import pygame
+from pygame import key
 from pygame.locals import *
 from pygame import mixer
 import random
@@ -48,7 +49,7 @@ while not game_over:
         if event.type == KEYDOWN:
             if event.key == K_UP or event.key == K_w:
                 my_direction = UP
-            if event.key == K_DOWN:
+            if event.key ==  K_DOWN or event.key == K_s:
                 my_direction = DOWN
             if event.key == K_RIGHT:
                 my_direction = RIGHT
