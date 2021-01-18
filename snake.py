@@ -51,7 +51,7 @@ while not game_over:
                 my_direction = UP
             if event.key ==  K_DOWN or event.key == K_s:
                 my_direction = DOWN
-            if event.key == K_RIGHT:
+            if event.key == K_RIGHT or event.key == K_d:
                 my_direction = RIGHT
             if event.key == K_LEFT:
                 my_direction = LEFT
