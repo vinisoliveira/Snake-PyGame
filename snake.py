@@ -48,13 +48,17 @@ while not game_over:
 
         if event.type == KEYDOWN:
             if event.key == K_UP or event.key == K_w:
-                my_direction = UP
+                if my_direction != DOWN:
+                    my_direction = UP
             if event.key ==  K_DOWN or event.key == K_s:
-                my_direction = DOWN
+                if my_direction != UP:
+                    my_direction = DOWN
             if event.key == K_RIGHT or event.key == K_d:
-                my_direction = RIGHT
+                if my_direction != LEFT:
+                    my_direction = RIGHT
             if event.key == K_LEFT or event.key == K_a:
-                my_direction = LEFT
+                if my_direction != RIGHT:
+                    my_direction = LEFT
 
     if collision(snake[0], apple_pos):
         apple_pos = on_grid_random()
